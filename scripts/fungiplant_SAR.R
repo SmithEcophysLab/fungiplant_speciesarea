@@ -23,8 +23,9 @@ sar_graph_plants <- ggplot(data = sar_dataframe, aes(x = area/1000, y = (s_plant
         axis.title.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.x=element_text(size=rel(2), colour = 'black'),
         axis.text.y=element_text(size=rel(2), colour = 'black'),
-        panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.background = element_rect(fill = 'transparent', colour = 'black'),
+        plot.background = element_rect(fill='transparent', color=NA),
+        panel.grid.major = element_line(colour = "transparent")) +
   geom_line(size = 3, color = 'darkgreen') +
   ylim(c(0,1)) +
   xlab(expression('Area (km' ^ '2' * ')')) +
@@ -38,21 +39,22 @@ sar_graph_microbes <- ggplot(data = sar_dataframe, aes(x = area/1000, y = (s_mic
         axis.title.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.x=element_text(size=rel(2), colour = 'black'),
         axis.text.y=element_text(size=rel(2), colour = 'black'),
-        panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.background = element_rect(fill = 'transparent', colour = 'black'),
+        plot.background = element_rect(fill='transparent', color=NA),
+        panel.grid.major = element_line(colour = "transparent")) +
   geom_line(size = 3, color = 'Blue') +
   ylim(c(0,1)) +
   xlab(expression('Area (km' ^ '2' * ')')) +
   ylab(expression('OTUs (rel. to 10 km' ^'2' * ')'))
 
 ## print plots
-jpeg('../plots/sar_graph_plants.jpeg',
-     width = 6, height = 6, units = 'in', res = 600)
+pdf('../plots/sar_graph_plants.pdf',
+     width = 6, height = 6)
 plot(sar_graph_plants)
 dev.off()
 
-jpeg('../plots/sar_graph_microbes.jpeg',
-     width = 6, height = 6, units = 'in', res = 600)
+pdf('../plots/sar_graph_microbes.pdf',
+     width = 6, height = 6)
 plot(sar_graph_microbes)
 dev.off()
 
